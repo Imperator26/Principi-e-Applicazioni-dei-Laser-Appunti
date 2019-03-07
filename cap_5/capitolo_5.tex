@@ -1,0 +1,687 @@
+\chapter{Funzionamento in onda continua del laser (CW laser behaviour)}
+\graphicspath{{./cap_5/images/}}
+
+\section{Rate equations per laser a 4 livelli}
+Schema del laser
+%figura
+\begin{enumerate}
+\item schema di laser a 4 livelli con $N_1 \simeq 0$, per cui l'inversione di popolazione $N=N_2-N_1\simeq N_2$
+\item il laser oscilla si in singolo modo trasversale e longitudinale
+\item transizione laser $\lve{2} \rightarrow \lve{1}$ sia ad allargamento omogeneo
+\item space-indipendent approximation: tutto il volume $V = A l$ del mezzo attivo è uniformemente pompato con tasso di pompaggio $R_p$; inoltre il modo $TEM_{00}$ oscillante si assume di intensità $I$ costante in un cilindro di area $A_b$ (detta area di modo nel mezzo attivo) e lunghezza $L$.
+\end{enumerate}
+
+Le rate equations descrivono la dinamica accoppiata tra il numero di fotoni $\phi(t)$ del modo $TEM_{00}$ oscillante del risonatore e l'inversione di popolazione $N(t)$ nel mezzo attivo.
+\begin{enumerate}
+\item Rate eq. per $N(t)$
+\begin{equation*}
+\frac{dN}{dt} = \underbrace{R_p}_\text{pumping} - \underbrace{\frac{N}{\tau}}_\text{decadimento radiativo e non radiativo} - \underbrace{WN}_\text{emissione stimolata}
+\end{equation*}
+dove $W = \frac{I}{h\nu} \s(\nu-\nu_0)$ (teoria semi-classica) 
+%disegno
+Che relazione c'è tra $\phi$ e $I$? Evidentemente, dette u(x,y,z,t) la densità di energia del campo e.m. in cavità si ha $\phi(t) = \frac{1}{h\nu} \int_\text{cavità} u dxdydz$ inoltre, è noto che $u=\frac{I}{c}$ si ha $\phi(t) = \frac{1}{h\nu} \int_\text{cavità} \frac{I}{c} n dxdydz$ per l'ipotesi (4) $\phi(t) = \frac{1}{h\nu} \frac{I A_b}{c_0} \underbrace{\int_0^L n dz}_{L_e}$ dove $L_e \equiv L-l+n_el$ è la lunghezza ottica del risonatore. Cioè $\phi = \frac{A_b L_e}{h\nu c_0}I$ per cui $W = \frac{I}{h\nu} \sigma = \frac{\s c_0}{A_b L_e} \phi$ ovvero $W=B\phi$ con $B\equiv \frac{\s c_0}{A_bL_e}$ è detta probabilità di emissione stimolata per fotone per modo: infatti se il modo ha un fotone ($\phi=1$), la probabilità che nell'unità di tempo il fotone faccia emissione stimolata con un atomo è $B$. Pertanto
+\begin{empheq}[box=\eqbox]{equation*}
+\dot{N} = R_p - \frac{N}{\tau} - B\phi N
+\end{empheq}
+\item Rate eq per $\phi$
+\begin{empheq}[box=\eqbox]{equation*}
+\frac{d\phi}{dt} = \underbrace{\frac{\phi}{\tau_c}}_\text{perdite del risonatore} + \underbrace{BN\phi V_a}_\text{numero di fotoni creati nell'unità di tempo per em. stimolata}
+\end{empheq}
+dove $V_a\equiv l A_b$ è il volume del modo nel mezzo attivo.
+\end{enumerate}
+
+Osservazioni
+\begin{enumerate}
+\item Relazione tra $P_{out}$ del laser e $\phi$.
+Poiché $\frac{\phi}{\tau_c} = \frac{\phi c_0}{L_e}\gamma = \frac{\phi c_0}{L_e} \left( \underbrace{\frac{\gamma_1}{2}}_\text{persi dallo specchio 1} + \underbrace{\frac{\gamma_2}{2}}_\text{persi dallo specchio 2} + \underbrace{\gamma_i}_\text{persi per diffr e ass spuri} \right)$ è il numero di fotoni persi nella cavità nell'unità di tempo è chiaro che $\frac{\phi c_0}{L_e} \frac{\gamma_2}{2} = \frac{\phi}{\tau_c} \frac{\gamma_2}{2\gamma}$ è il numero di fotoni che fuoriesce dalla cavità dello specchio 2 di uscita nell'unità di tempo, per cui
+\begin{empheq}[box=\eqbox]{equation*}
+P_{out} = h\nu \frac{\phi}{\tau_c} \frac{\gamma_2}{2\gamma} = h\nu \frac{\phi c_0 \gamma_2}{2L_e}
+\end{empheq}
+Esempio Laser He-Ne ($633nm, P_out\simeq 5mW, L_e = 50cm R_1=100\% R_2 = 99\%, T_i=0$) per cui $\gamma_2 = - \ln (1-R_2) \simeq T_2 = 0.01$ e $ \gamma \simeq \frac{\gamma_2}{2}$. Dalla formula di prima $\phi = \frac{P_{out} 2L_e}{h\nu c_0 \gamma_2} \simeq 1.06 \cdot 10^{10}$ fotoni.
+
+Preso laser a $CO_2$ ($\l = 10.6 \mu m, L_e = 150 cm, P_{out} \simeq 10 kW, T_2 = 45\%) \rightarrow \phi \simeq 0.9 \cdot 10^{16}$ fotoni.
+
+\item Legame tra $P_{pump}$ e $R_p$
+$P_{pump}  = \frac{R_p h \nu_pV}{\eta_p}$ con $V=lA$ volume pompato nel mezzo attivo, $\eta_p$ efficienza di pompaggio.
+\item Contributo dell'emissione spontanea alla rate eq. per $\phi$ $\frac{d\phi}{dt} = \underbrace{-\frac{\phi}{\tau_c}}_\text{perdite} + \underbrace{BN\phi V_a}_\text{emissione stimolata} + \cancel{\underbrace{\frac{N}{\tau_{sp}}V}_\text{emissione spontanea}}^{NO}$
+La teoria quantistica mostra che il corretto contributo dell'emissione spontanea alla rate equation per $\phi$ del modo oscillante vale.
+\begin{empheq}[box=\eqbox]{equation*}
+\dot{\phi} = - \frac{\phi}{\tau_c} + BNV_a (\phi + \underbrace{1}_\text{extra-fotone dovuto all'emissione spontanea})
+\end{empheq}
+L'extra fotone è importante per l'accensione del laser, ma è trascurabile per laser sopra soglia. Solitamente scriviamo
+$\dot{\phi} = - \frac{\phi}{\tau_c} + BNV_a\phi$ con $\phi(0) = 1$ (se il laser è sotto soglia).
+\end{enumerate}
+
+\section*{Condizioni di soglia (threshold) ed efficienza (slope efficiency) del laser}
+Le rate eq.
+\begin{equation*}
+\begin{cases}
+\dot{N} = R_p - \frac{N}{\tau} - B\phi N\\
+\dot{\phi} = \phi(-\frac{1}{\tau_c} + BN V_a
+\end{cases}
+\end{equation*}
+sono un sistema differenziale non-lineare del tipo di Volterra (preda(atomo)-predatore(fotone)).
+
+Il sistema ammette due soluzioni stazionarie (punti fissi)
+\begin{enumerate}
+\item \begin{equation*}
+\begin{cases}
+\phi_0 = 0\\
+N_0 = R_p \tau
+\end{cases}
+\end{equation*}laser sotto soglia
+Analisi di stabilità
+\begin{equation*}
+\begin{cases}
+\phi(t) = \phi_0 + \delta \phi(t)\\
+N(t) = N_0 + \delta N(t)
+\end{cases}
+\end{equation*}
+con $\delta \phi(t)$ e $\delta N(t)$ infinitesimo.
+\begin{equation*}
+\begin{cases}
+\dot{\delta N} = -\frac{\delta N}{\tau} - B(N_0 \delta \phi + \delta N \phi_0)\\
+\dot{\delta \phi} = \phi_0(BV_a \delta N) + \delta\phi(-\frac{1}{\tau_c} + BN_0V_a)
+\end{cases}
+\end{equation*}
+essendo $N_0 = R_p\tau$ e $\phi_0 = 0$ ho
+\begin{equation*}
+\begin{cases}
+\dot{\d N} = -\frac{\delta N}{\tau} - B R_p \tau \delta \phi\\
+\dot{\delta \phi} = \delta\phi(-\frac{1}{\tau_c} + BN_0V_a) 
+\end{cases}
+\end{equation*}
+che è un sistema lineare in $\delta \phi(t)$ e $\delta N(t)$. Dalla seconda eq si ha, integrando
+\begin{equation*}
+\delta \phi(t) = \delta\phi(0) e^{t(-\frac{1}{\tau_c} + BN_0V_a)}
+\end{equation*}
+che è stabile, cioè $\delta \phi(t) \rightarrow 0$ se $t \rightarrow \infty$ se:
+\begin{equation*}
+-\frac{1}{\tau_c} + BN_0V_a \leq 0
+\end{equation*}
+cioè $ N_0 \leq N_{th}$ con $N_{th \equiv \frac{1}{BV_a \tau_c}}$
+Perciò, se $R_p < R_{pth}$ con $R_{pth} \equiv \frac{N_{th}}{\tau} = \frac{1}{BV_a \tau_c}$ (tasso di pompaggio critico o di soglia), dall'extra-fotone $\delta\phi(0) = 1$ di emissione spontanea $\delta\phi(t)$ cresce esponenzialmente e il laser si mette in oscillazione.
+\end{enumerate}
+
+Osservazioni:
+\begin{enumerate}
+\item La condizione di soglia $N_e = N_{th} = \frac{1}{BV_a\tau_c}$ ha un significato fisico interessante. Ricordando che $B=\frac{\s \tau_0}{A_b L_e}$ e $\tau_c = \frac{L_e}{\gamma c_0}$ si ha:
+\begin{equation*}
+N_{th} = \frac{1}{\frac{\s \tau_0}{A_b L_e}V_a\frac{L_e}{\gamma c_0}} = \frac{\gamma}{\s l}
+\end{equation*}
+cioè
+\begin{equation*}
+N_{th} \s l = \gamma
+\end{equation*}
+che esprime l'uguaglianza \textit{guadagno = perdite}.
+\item Potenza di soglia del laser:
+\begin{equation*}
+P_{pump th} = \frac{R_{p th} h\nu_p V}{\eta_p} = \frac{N_{th}}{\tau} \frac{h\nu_p V}{\eta_p} = \frac{\gamma}{\s l}\frac{h\nu_p A l}{\tau \eta_p}
+\end{equation*}
+cioè
+\begin{empheq}[box=\eqbox]{equation*}
+P_{pump th} = \frac{\gamma}{\s \tau} \frac{h\nu_p A}{\eta_p}
+\end{empheq}
+Si noti che $P_{pump th}$ è proporzionale a $\gamma$ ed ad $A$, ma non dipende da $l$. Inoltre $P_{pump th}$ è inversamente proporzionale al prodotto $\s\tau$ che è un fattore di merito del mezzo laser.
+\end{enumerate}
+
+\begin{equation*}
+\begin{cases}
+\dot{\d N} = -\frac{\delta N}{\tau} - B R_p \tau \delta \phi\\
+\dot{\delta \phi} = \delta\phi(-\frac{1}{\tau_c} + BN_0V_a) 
+\end{cases}
+\end{equation*}
+La seconda soluzione stazionaria è
+\begin{equation*}
+\begin{cases}
+N = N_0 = N_th \equiv \frac{1}{BV_a\tau_c}\\
+\phi = \phi_0 = \frac{1}{BN_0} \left(R_p - \frac{N_0}{\tau}\right) = \frac{1}{B\tau} \left(\frac{R_p}{R_{th}} - 1\right)
+\end{cases}
+\end{equation*}
+cioè
+\begin{equation*}
+\begin{cases}
+N_0 = N_th = \frac{1}{BV_a\tau_c}\\
+\phi_0 = (x - 1)
+\end{cases}
+\end{equation*}
+soluzione laser sopra soglia
+dove $x \equiv \frac{R_p}{R_{pth}} = \frac{P_{pump}}{P_{pump th}}$ è il cosiddetto parametro di sopra soglia. Tale soluzione esiste ed è stabile per $x \geq 1$.
+%disegno
+La potenza di uscita del laser vale:
+\begin{equation*}
+P_{out} = \frac{\phi_0}{\tau_c}h\nu \left(\frac{\gamma_2}{2\gamma}\right) = \frac{h\nu}{\tau_c} \frac{\gamma_2}{2\gamma} \frac{1}{B\tau} \left(\frac{P_{pump}}{P_{pump th}} - 1\right)
+\end{equation*}
+dove $\eta$ è detto coefficiente di derivata (slope efficiency) del laser.
+%disegno
+Calcoliamo $\eta$:
+\begin{align*}
+\eta &\equiv \frac{dP_{pump}}{dP_{pump th}}\\
+&= \frac{h\nu}{\tau_c} \frac{\gamma_2}{2\gamma} \frac{1}{B\tau} \frac{1}{P_{pump th}}\\
+&= \frac{h\nu}{\tau_c} \frac{\gamma_2}{2\gamma} \frac{1}{B\tau} \frac{1}{\frac{R_{p th} h\nu_p V}{\eta_p}}\\
+&= \frac{h\nu}{h\nu_p} \frac{\gamma_2}{2\gamma} \eta_p \frac{1}{B\tau\tau_c V \frac{N_{th}}{\tau}}\\
+&= \frac{h\nu}{h\nu_p} \frac{\gamma_2}{2\gamma} \eta_p \frac{1}{B\tau\tau_c V \frac{1}{BV_a\tau_c\tau}}\\
+&= \underbrace{\frac{h\nu}{h\nu_p}}_{\substack{\text{quantum}\\ \text{efficiency}\\ \eta_q}} \underbrace{\frac{\gamma_2}{2\gamma}}_{\substack{\text{coupling}\\ \text{efficiency}\\ \eta_c}}\underbrace{\eta_p}_{\substack{\text{pumping}\\ \text{efficiency}\\ \eta_p}} \underbrace{\frac{A_b}{A}}_{\substack{\text{area}\\ \text{efficiency}\\ \eta_t}}\\
+&= \eta_q \eta_c \eta_p \eta_t
+\end{align*}
+
+\section*{Oscillazioni di rilassamento}
+Facciamo l'analisi di stabilità lineare della soluzione laser sopra soglia. Dalle rate eq. linearizzazione attorno alla soluzione stazionaria
+\begin{equation*}
+\begin{cases}
+N_0 = N_th = \frac{1}{BV_a\tau_c}\\
+\phi_0 = (x - 1)
+\end{cases}
+\end{equation*}
+Anstaz
+\begin{equation*}
+\begin{cases}
+N(t) = N_0 + \delta N(t)\\
+\phi(t) = \phi_0 + \delta N(t)
+\end{cases}
+\end{equation*}
+linearizzo il sistema
+\begin{equation*}
+\begin{cases}
+\dot{\delta N} = -\frac{\delta N}{\tau} - B(N_0 \delta \phi + \delta N \phi_0)\\
+\dot{\delta \phi} = \phi_0(BV_a \delta N)
+\end{cases}
+\end{equation*}
+cioè
+\begin{equation*}
+\begin{cases}
+\dot{\delta N} = -\delta N \left(\frac{1}{\tau} + B\phi_0\right) - BN_0 \delta \phi\\
+\dot{\delta \phi} = \phi_0 BV_a \delta N
+\end{cases}
+\end{equation*}
+Elimino $\delta\phi$ dal sistema. derivo la prima eq del sistema nel tempo
+\begin{equation*}
+\ddot{\delta N} = -\dot{\delta N} \left(\frac{1}{\tau} + B\phi_0\right) - BN_0\phi_0BV_a \delta N
+\end{equation*}
+cioè
+\begin{equation*}
+\ddot{\delta N} + \left(\frac{1}{\tau} + B\phi_0\right) - BN_0\phi_0BV_a \delta N
+\end{equation*}
+che scrivo così
+\begin{equation*}
+\ddot{\delta N} + \frac{2}{\tau_0} \dot{\delta N} + \Omega^2 \delta N = 0
+\end{equation*}
+dove ho posto
+\begin{equation*}
+\frac{2}{t_0} \equiv \frac{1}{\tau} + B\phi_0 = \frac{1}{\tau} + B\frac{1}{B\tau}(x-1)= \frac{x}{\tau}
+\end{equation*}
+e
+\begin{equation*}
+\Omega \equiv \sqrt{\frac{x-1}{\tau\tau_c}}
+\end{equation*}
+$\delta\phi_0$ soddisfa la medesima equazione differenziale dell'oscillatore armonico smorzato. Gli autovalori sono
+\begin{equation*}
+\l^2 + \frac{2}{t_0} \l + \Omega^2 = 0
+\end{equation*}
+\begin{equation*}
+\l_{1,2} = -\frac{1}{t_0} \pm \sqrt{\left(\frac{1}{t_0}\right)^2 - \Omega^2} = -\frac{1}{t_0} \pm i\sqrt{\Omega^2 - \left(\frac{1}{t_0}\right)^2}
+\end{equation*}
+Si noti che, in ogni caso la $Re{\l_{1,2}} < 0$ cioè la soluzione laser sopra soglia è asintoticamente stabile.
+\\
+Per capire come, dopo una perturbazione, un laser torna alla soluzione stazionaria, distinguo 2 casi:
+\begin{enumerate}
+\item laser a stato solido e simiconduttore $Omega > \frac{1}{t_0}$ cioè $\l_1, \l_2$ complessi coniugati. Allora la soluzione per $\delta N(t)$ e, analogamente, per $\delta\phi(t)$ è della forma:
+\begin{equation*}
+\delta N(t) = c_1 e^{-\frac{t}{t_0}} \cos(\Omega_{relax} t + \psi)
+\end{equation*}
+con $c$ e $\psi$ costanti di integrazione e $\Omega_{relax} \equiv \sqrt{\Omega^2 - \frac{1}{t_0^2}}$. Se inoltre $\Omega >> \frac{1}{t_0}$ (come nei laser a stato solido e semiconduttore) si ha:
+\begin{equation*}
+\nu_{relax} = \frac{\Omega_{relax}}{2\pi} = \frac{1}{2\pi} \sqrt{\frac{x-1}{\tau\tau_c}}.
+\end{equation*}
+%disegni 2
+\item $t_0 > \frac{1}{\Omega}$ laser a gas
+la soluzione è
+\begin{equation*}
+\delta N(t) = c_1 e^{\l_1 t} + c_2 e^{\l t}
+\end{equation*}
+con $c_1$ e $c_2$ costanti di integrazione. Non ho oscillazioni di rilassamento.
+\end{enumerate}
+Osservazione condizione necessaria affinché un laser abbia le oscillazioni di rilassamento è:
+\begin{equation*}
+\tau > \tau_c
+\end{equation*}
+Dimostrazione\\
+Infatti le oscillazioni di rilassamento si hanno se
+\begin{equation*}
+\Omega > \frac{1}{t_0^2}
+\end{equation*}
+cioè
+\begin{equation*}
+\frac{x-1}{\tau\tau_c} > \frac{x^2}{4\tau^2}
+\end{equation*}
+con $x \geq 1$.
+Questa disequazione equivale a:
+\begin{equation*}
+f(x) \equiv \frac{4 (x-1)}{x^2} > \frac{\tau_c}{\tau}
+\end{equation*}
+%disegno
+Se $\frac{\tau_c}{\tau} > 1$ come in figura, la disequazione $f(x) > \frac{\tau_c}{\tau}$ non è mai soddisfatta, cioè non ho oscillazioni di rilassamento.
+
+\section*{Cause di oscillazione multimodale}
+Un modo del risonatore di frequenza $\nu_c$ si mette in oscillazione se il guadagno $\s (\nu_c - \nu_0) Nl$ del modo eguaglia le sue perdite $\gamma(\nu_c)$, cioè se:
+\begin{equation*}
+\s (\nu_c - \nu_0) Nl = \gamma(\nu_c)
+\end{equation*}
+%disegno
+Per far oscillare su un singolo modo trasversale $TEM_{00}$ è sufficiente porre in cavità una apertura di raggio $a$ poco superiore allo spot-size $\w$ del modo $TEM_{00}$:
+%disegni 2
+le perdite $\gamma(\nu_c)$ sono elevate per i modi $TEM_{lm}$ di ordine superiore (perché non passano bene nel foro) e quindi non raggiungono la condizione di soglia.\\
+Senza particolari accorgimenti in un laser con ampia di guadagno vi sono più modi longitudinali che possono raggiungere soglia e mettersi in oscillazione, dando luogo in uscita ad una potenza $P_{out}(t)$ piuttosto irregolare: questo è detto regime di free-running di un laser.
+%disegni 2->1
+estremamente irregolare
+La teoria a rate-eq. vista non è in grado di spiegare il fenomeno del regime multimodale del free-running. Infatti, nelle ipotesi di validità viste delle rate-eq.
+%disegno
+Questo ragionamento vale però nelle ipotesi che (i) allargamento omogeneo di riga, (ii) d'intensità del modo è uniforme in cavità (in particolare trascuro il carattere di onda stazionaria del modo in cavità Fabry-Perot).
+Le cause di oscillazione multimodale sono 2:
+\begin{enumerate}
+\item Spectral Hole Burning (per riga non-omogeneo)
+Per il fenomeno dello spectral hole burning (vedi lezione silla saturazione delle prima parte del corso) al crescere di $R_p$ sopra $R_{p th}$ del modo centrale, la curva di guadagno $\s (\nu - \nu_0) N(\nu)l$ si deforma e si creano buche spettrali come in figura.
+%disegno
+Al crescere di $R_p$, aumentano i modi longitudinali che raggiungono la condizione di soglia.
+\item Spatial Hole Burning si ha in laser a cavità lineare con riga ad allargamento omogeneo e deriva dal carattere di onda stazionaria del modo oscillante.
+%pic
+Quando il modo (A) centrale si mette in oscilazione, l'inversione di popolazione: $N(z) = \frac{R_p \tau}{1 + \frac{I(z)}{I_s}}$ intensità del modo (A).
+%pic
+Al crescere di $R_p$ sopra $R_{p th}$ del modo centrale (A), $N(z)$ continua a crescere nei punti dove $I_A(z)$ ha i suoi modi: si creano cioè delle buche spaziali nel profilo di guadagno $\s N l$. Nei modi di (A), i modi contigui (B) e (C) hanno dei ventri, e possono quindi sfruttare questo incremento $N$, raggiungendo anche loro la condizione di soglia.
+\end{enumerate}
+
+\section{Tecniche di selezione singolo modo longitudinale}
+\subsection{Metodo cavità corta}
+%disegni 2
+Spaziatura modi longitudinali $\Delta \nu = \frac{c}{2L_e}$ ($L_e$ = lunghezza ottica del risonatore.
+Se $\D \nu > \frac{\D \nu_0}{2}$ solo il modo centrale (A) "vede" guadagno, ed è l'unico che raggiunge soglia. Cioè $\frac{c}{2L_e} < \frac{\D \nu_0}{2}$ cioè $L_e < \frac{c_0}{\D \nu_0}$
+Es. microchip solid state lasers
+%disegno
+Ad esempio per laser a Nd:YAG ($\l = 1064 nm$), $\D \nu_0 = 126 GHz$ poiché $L_e = nd$ con $n \simeq 1.4$ per avere singolo modo
+\begin{equation*}
+d < \frac{c_0}{n \D \nu_0} = \frac{3\cdot 10^8 m/s}{1.4 \cdot 126 \cdot 10^9 1/s} \simeq 1.7 mm
+\end{equation*}
+
+\subsection{Uso di uno (o più) etalon in cavità}
+L'idea è quella di inserire in cavità uno (o più) etalon che introducono perdite spettrali $\gamma = \gamma(\nu)$ dipendenti dalla frequenza $\nu$ del modo.
+%disegni 3
+Finesse dell'etalon: $\mathfrak{F} \equiv \frac{\D \nu_{fsr}}{\D \nu_c}$
+\subsubsection{Singolo etalon}
+%disegno
+Per avere oscillazione su singolo modo devo soddisfare 2 condizione:
+\begin{equation*}
+\begin{cases}
+\D \nu > \frac{\D \nu_c}{2}\\
+\D \nu_{fsr} > \frac{\D \nu_0}{2}
+\end{cases}
+\end{equation*}
+cioè:
+\begin{equation*}
+\begin{cases}
+\D \nu > \frac{\D \nu_c}{2} \rightarrow \D\nu_c < 2\D\nu\\
+\D \nu_c \mathfrak{F} > \frac{\D \nu_0}{2} \rightarrow \D \nu_c C \frac{\D\nu_0}{2\mathfrak{F}}
+\end{cases}
+\end{equation*}
+che implica necessariamente
+\begin{equation*}
+\frac{\D \nu_0}{2 \mathfrak{F}} < 2\D\nu = \frac{c}{L_e}
+\end{equation*}
+cioè:
+\begin{equation*}
+L_e < \left(\frac{c_0}{\D\nu_0}\right) 2\mathfrak{F}
+\end{equation*}
+cioè rispetto al caso a cavità corta, $L_e$ può essere più lungo di un fattore $2\mathfrak{F}$. Tipicamente $\mathfrak{F}$ varia tra 40-100, per cui, assumendo ad esempio il laser a Nd:YAG, $L_e < 1.7 mm \cdot 2\mathfrak{F}$ se $\mathfrak{F} \approx 50$, $L_e < 170 mm = 17 cm$.
+\subsubsection{Due etalon}
+Per laser con ampia banda $\D\nu_0$ di guadagno (ad ese. $laser Ti:Al_0O_3$, $\D\nu_0 \simeq 100 THz$), per avere singolo modo occorre usare due (o più) etalon.
+%disegno
+Condizioni da soddisfare affinché oscilli il solo modo centrale (A)
+\begin{equation*}
+\begin{cases}
+\D\nu > \frac{\D\nu_{c1}}{2}\\
+\D\nu_{fsr2} > \frac{\D \nu_0}{2}\\
+\frac{\D \nu_{c2}}{2} < \D \nu_{fsr1}
+\end{cases}
+\end{equation*}
+\begin{equation*}
+\begin{cases}
+\D\nu > \frac{\D\nu_{c1}}{2}\\
+\D\nu_{c2} > \frac{\D \nu_0}{2\mathfrak{F}_2}\\
+\D \nu_{c2} < 2\D \nu_{c1} \mathfrak{F}_1
+\end{cases}
+\end{equation*}
+cioè:
+\begin{equation*}
+\begin{cases}
+\D\nu_{c1} < 2\D\nu\\
+\D\nu_{c2} > \frac{\D \nu_0}{2\mathfrak{F}_2}\\
+\D \nu_{c1} < \frac{\D \nu_{c2}}{2\mathfrak{F}_1}
+\end{cases}
+\end{equation*}
+dalla I e III segue
+\begin{equation*}
+\frac{\D\nu_{c2}}{2\mathfrak{F}_1} < 2\mathfrak{F_1}
+\end{equation*}
+e dalla II
+\begin{equation*}
+\frac{\D \nu_0}{2\mathfrak{F}_2} < 2 \D \nu 2 \mathfrak{F}_1
+\end{equation*}
+cioè
+\begin{equation*}
+\D \nu_0 < \frac{c_0}{L_e} (2\mathfrak{F}_1)(2\mathfrak{F}_2)
+\end{equation*}
+\begin{equation*}
+L_e < \left(\frac{c_0}{\D\nu_0}\right) (2\mathfrak{F}_1)(2\mathfrak{F}_2)
+\end{equation*}
+cioè, rispetto al caso della cavità corta, $L_e$ può essere aumentato del fattore $(2\mathfrak{F}_1)(2\mathfrak{F}_2)$. Ad es. per laser $Ti:Al_2O_3$,
+$\D\nu_0 \approx 100THz$, $\mathfrak{F}_1 = \mathfrak{F}_2 = 100$, $L_e < \frac{3\cdot 10^8 m/s}{100\cdot10^{12}} \cdot 4\cdot10^4 \approx \frac{12}{100}m \approx 10 cm$
+
+\subsection{Cavità ad anello con diodo ottico (vale solo per laser ad allargamento di riga omogeneo)}
+Per laser ad allargamento omogeneo, per avere oscillazione in singolo modo è sufficiente eliminare il carattere di onda stazionaria del modo e.m.. Per questo si usa una cavità ad anello con un diodo ottico che forza l'oscillazione unidirezionale (oraria o antioraria).
+%disegno
+Un diodo ottico è un elemento ottico passivo non reciproco che trasmette luce in una direzione ma non in quella opposta.
+%disegno
+Cosa fa il rotatore di Faraday ad un'onda?
+Ruota lo stato di polarizzazione lineare dell'onda e.m. di un angolo $\alpha$ pari a $\alpha = VHl$ dove $V$ è la costante di Verdet.
+%disegno
+Se scelgo $\alpha = 45 \degree$ ho:
+%disegno
+se $\alpha = \frac{\pi}{4}$ la trasmissione dal polarizzatore finale (1) è zero per la legge di Malus.
+
+\section{Limite di monocromaticità della luce laser}
+Per laser in singolo modo longitudinale possiamo scrivere
+\begin{equation*}
+E(t) = A(t) \cos(2\pi \nu_L t + \phi(t))
+\end{equation*}
+La frequenza $\nu_L$ di oscillazione è data dalla formula (detta di frequency pulling) dove
+\begin{align*}
+&\D \nu_0 = \text{larghezza della riga di gain}\\
+&\nu_0 = \text{frequenza di transizione laser}\\
+&\nu_c = \text{frequenza di risonanza}\\
+&\D\nu_c = \text{larghezza di risonanza del quasi-modo} Q = \frac{\nu_c}{\D\nu_c}
+\end{align*}
+Si noti che $\nu_L$ sta in mezzo tra $\nu_c$ e $\nu_0$ (cioè $\nu_L$ è "tirata" verso $\nu_0$). Solitamente $\D\nu_c << \D\nu_0$ per cui:
+\begin{equation*}
+\nu_L \simeq \nu_c
+\end{equation*}
+L'effetto del frequency pulling si interpreta in modo semi-classico osservando che gli atomi a due livelli invertiti corrispondono ad una polarizzazione $\*P$ del mezzo otico che modifica l'indice di rifrazione $n(\nu) = n_R(\nu) + in_I(\nu)$ così:
+%disegno
+$n_I$ è legato al gain $n_R$ alla velocità di fase e quindi alla lunghezza ottica del risonatore. Lo spostamento di $\nu_L$ da $\nu_c$ si spiega a causa della variazione $\delta n_R$ della parte reale dell'indice di rifrazione.
+Per laser sopra soglia, il limite di monocromaticità, che deriva dalle fluttuazioni di ampiezza $A(t)$ e fse $\phi(t)$, è dovuto a:
+\begin{equation*}
+\begin{cases}
+\text{technical noise (vibrazioni acustiche, fluttuazioni della temperatura, etc.): prevale in tutti i laser tranne che nei laser a semiconduttore}\\
+\text{quantistico: limite dovuto all'emissione spontanea (limite di Schawlow e Townes) limitante nei laser a semiconduttore}
+\end{cases}
+\end{equation*}
+In un laser ideale, in assenza di technical noise posto:
+\begin{equation*}
+E(t) = A(t) \cos(2\pi\nu_Lt + \phi(t)) \quad \tilde{E}(t) = A(t) e^{i\phi(t)}
+\end{equation*}
+se il laser è ben sopra soglia $A(t)$ non fluttua ed ha un valore $A(t) = A_0$, cioè $\left|\tilde{E}\right| \simeq \left(\left|\tilde{E}\right| - A_0\right)$
+%disegno
+(in realtà $\left|\tilde{E}\right|$ ha una distribuzione di Poisson con valore medio $A_0$: strato coerente di luce). Questo significa che, per laser sopra soglia, non ci sono fluttuazioni di ampiezza. La fase $\phi(t)$, invece, fa un cammino aleatorio (random walk)
+%disegno
+Le fluttuazioni della fase $\phi(t)$ sono dovute ai fotoni di emissione spontanea che, di tanto in tanto, vanno a "sporcare" i fotoni di emissione stimolata. Questo fa si che lo spettro di potenza di $E(t)$ è una lorentziana, centrata in $\nu_L$ e con larghezza data dalla formula di Scharlow e Townes:
+\begin{equation*}
+\D\nu_L = \frac{N_2}{N_2 - N_1} \frac{2\pi h\nu_L (\D\nu_c)^2}{P_{out}} \underbrace{\simeq}_{N_1 \simeq 0} \frac{2\pi h \nu_L (\D\nu_c)^2}{P_{out}}
+\end{equation*}
+\subsection{Derivazione euristica della formula di Scharlow e Townes}
+Dal principio d'indeterminazione tempo-energia:
+\begin{equation*}
+\D E \Delta \tau \sim \hbar
+\end{equation*}
+dove $E = \phi h \nu_L$ è l'energia dei fotoni in cavità. Siccome $\D \phi \approx 0$, si ha $\D E = \D \phi h \nu_L + \phi h \D\nu_L \simeq h\phi\D \nu_L$
+$\D \tau$ si può determinare dall'intervallo temporale caratteristico in cui fotoni di emissione spontanea vanno a "sporcare" i fotoni generati per emissione stimolata.
+Dalla rate-eq. per $\phi$:
+\begin{equation*}
+\dot{\phi} = \underbrace{-\frac{\phi}{\tau_c}}_\text{fotoni persi nell'unità di tempo} + \underbrace{BNV_a\phi}_\text{fotoni generati per emissione stimolata nell'unità di tempo} + \underbrace{BNV_a}_\text{fotoni di emissione spontanea generati nell'unità di tempo}
+\end{equation*}
+si comprende che
+\begin{equation*}
+\D\tau \sim \frac{1}{BNV_a} = \frac{1}{BV_aN_{th}} = \tau_c
+\end{equation*}
+Pertanto:
+\begin{equation*}
+\D E \D \tau \sim \hbar
+\end{equation*}
+dà:
+\begin{equation*}
+\phi h \D\nu_L \tau_c \sim \hbar
+\end{equation*}
+da cui:
+\begin{equation*}
+\D\nu_L \sim \frac{1}{2\pi \phi \tau_c}
+\end{equation*}
+Ricordando che:
+\begin{equation*}
+P_{out} = \frac{\phi}{\tau_c} h\nu_L \left(\frac{\gamma_2}{2\gamma}\right) \simeq \frac{\phi h \nu_L}{\tau_c}
+\end{equation*}
+essendo $\frac{\gamma_2}{2\gamma} \simeq 1$ si ha $\D\nu_L \simeq \frac{1}{2\pi \tau_c \frac{\tau_c P_{out}}{h\nu_L}} = \frac{2\pi h\nu_L}{(2\pi\tau_c)^2 P_{out}} = \frac{2\pi h\nu_L (\D \nu_c)^2}{P_{out}}$
+\\
+Esempi
+\begin{enumerate}
+\item Calcola $\D\nu_L$ quantistico per laser a He-Ne e laser a GaAs.
+\begin{enumerate}
+\item Laser a He-Ne $\l = 633nm$ $\nu_L \simeq 4.7\cdot 10^{14} Hz$, $L = 1m$, $\gamma \simeq \frac{\gamma_2}{2} = 1\%$ per cui $\tau_c = 3.3 \cdot 10^{-7} s$ $\D\nu_c = \frac{1}{2\pi \tau_c} \simeq 4.7 \cdot 10^5 Hz$ ricordando che $\D\nu_c = \frac{1}{2\pi\tau_c}$ se $P_{out} \simeq 1mW$ ho $(\D\nu_L)_{S.T.} \simeq 0.43 mHz$
+\item GaAs $\l = 850 nm$, $L = l = 300 \mu m$, $n= 3.35$, $L_e=nl$ $\gamma = 1.03$ $\tau_c = \frac{L_e}{c_0 \gamma} \simeq 3.4 ps$, $\D\nu_c = \frac{1}{2\pi \tau_c} = 4.7 \cdot 10^{10} Hz$
+con $P_{out} = 3mW$ $(\D\nu_L)_{S.T.} \simeq 3.2 MHz$
+\end{enumerate}
+\item Si dia una stima della fluttazione $\delta L$ della lunghezza $L$ in una cavità laser di tipo Fabry-Perot per laser a He-Ne corrispondente al limite quantistico $(\D\nu_L)_{S.T.}$. Se gli specchi sono posti a distanza $L$, le frequenze dei modi longitudinali sono:
+\begin{equation*}
+\nu_n = \frac{c_0}{2L} n \quad \text{n indice di modo longitudinale}
+\end{equation*}
+%disegni 2
+Se $L$ varia di un infinitesimo $\delta L$, la frequenza $\nu_n$ varia di:
+\begin{equation*}
+\delta \nu_n = -\frac{c_0}{2L^2} n \delta L = \-\nu_n \frac{\delta L}{L}
+\end{equation*}
+cioè:
+\begin{equation*}
+\delta \nu_n = -\nu_n \frac{\delta L}{L}
+\end{equation*}
+Si noti che, se $\delta L = \frac{\l_n}{2}$, si ha $\delta \nu_n= - \nu_n \frac{\l_n}{2L} = -\frac{c_0}{2L} = \D \nu$
+Evidentemente:
+\begin{equation*}
+(\D\nu_L)_{thermal noise} \simeq |\delta \nu_n| = \nu_n \frac{\delta L}{L} = \nu_L\frac{\delta L}{L} = \frac{\delta L}{L} \frac{c_0}{\l_L}
+\end{equation*}
+$\delta L$ per cui $(\D\nu_L)_{thermal noise}$ eguaglia il limite quantistico di S.T.
+Si ottiene i:
+\begin{equation*}
+\frac{\delta L}{L} \frac{c_0}{\l_L} = (\D\nu_L)_{thermal noise} \simeq 0.43 mHz
+\end{equation*}
+cioè:
+\begin{equation*}
+\delta L \simeq \frac{L \l_L}{c_0} \simeq \frac{1 m 633 \cdot 10^{-9} m 0.43 \cdot 10^{-3} Hz}{3 \cdot 10^8 m/s} = \frac{633 \cdot 0.43}{3} \cdot 10^{-20} m = 0.9 \cdot 10^{-18} m \simeq 0.9 \cdot 10^{-9} nm
+\end{equation*}
+\end{enumerate}
+
+Esercizi
+\begin{enumerate}
+\item \begin{align*}[l]
+&L = 10 cm\\
+&l = 1cm\\
+&n = 1.82\\
+&R_1 = 95\%\\
+&R_2 = 100\%\\
+&R_3 = 98\%\\
+&\s_e = 2.8 \cdot 10^{-19}
+\end{align*}
+Preso un piano $\gamma$ all'interno della cavità, sia $I(t)$ l'intensità dell'onda viaggiante che attraversa $\gamma$ al tempo $t$. Detto:
+\begin{equation*}
+T_R = \frac{L_e}{c_0} = \frac{L - l + ln}{c_0}
+\end{equation*}
+il tempo di transito della luce nell'anello, si ha:
+\begin{equation*}
+I(t + T_R) = I(t) e^g R_1R_2R_3
+\end{equation*}
+con $g\equiv\s_eNl$ è il guadagno nel mezzo attivo.
+Ansatz:
+\begin{equation*}
+I(t) = I(0) e^{-\frac{t}{\tau_c}}
+\end{equation*}
+dove $\tau_c$ (da determinarsi) è il tempo di vita dei fotoni in cavità.
+Sostituendo la \eqref{eq: }2 nella \eqref{eq:}1:
+\begin{equation*}
+I(0) e^{-\frac{1+T_R}{\tau_c}} = I(0) e^{-\frac{t}{\tau_c}} R_1R_2R_3 e^g
+\end{equation*}
+Introdotte le perdite logaritmiche $\gamma$ dell'anello:
+\begin{equation*}
+\gamma \equiv -\ln(R_1) -\ln(R_2) -\ln(R_3)
+\end{equation*}
+si ha:
+\begin{equation*}
+e^{-\frac{T_R}{\tau_c}} = e^{g-\gamma}
+\end{equation*}
+da cui:
+\begin{equation*}
+\frac{T_R}{\tau_c} = \gamma - g
+\end{equation*}
+\begin{equation*}
+\tau_c = \frac{T_R}{\gamma - g} = \frac{L_e}{c_0(\gamma - g}
+\end{equation*}
+\begin{enumerate}
+\item Se il cristallo non è pompato, $N\simeq 0$ cioè $g=0$ e:
+\begin{equation*}
+\tau_c = \frac{L_e}{c_0 \gamma} = \frac{L_e}{c_0 (-\ln(R_1) -\ln(R_2) -\ln(R_3))} = 5 ns
+\end{equation*}
+\item Se $R_p = \frac{R_{p th}}{2}$, poiché $g_{th} = N_{th} \s_e l = \gamma$ si ha $N = \frac{N_{th}}{2}$ e quindi $g =\frac{\gamma}{2}$ per cui in tal caso:
+\begin{equation*}
+\tau_c = \frac{L_e}{c_0(\gamma - \frac{\gamma}{2}} = 10 ns
+\end{equation*}
+\item Se $R_p \rightarrow R_{p th}^-$, $N\rightarrow N_{th}^-$, $g \rightarrow g_{th} = \gamma^-$, e dunque $\tau_c \rightarrow \infty$ 
+\item Se $R_p = R_{p th}$, $g = \gamma$ e dunque $\s_e N_{th}l=\gamma$, $N_{th}=\frac{\gamma}{\s_e l} = 2.55 \cdot 10^{17} m^{-3}$ come prima.
+\end{enumerate}
+
+\item Considero schema laser a 4 livelli con tempi di vita $T_1$ e $T_2$ dei livelli laser inferiore e superiore.
+%disegno
+Per laser sotto soglia, detto $R_p$ il tasso di pompaggio le rate-eq. per i livelli \lv{1} e \lv{2} sono:
+\begin{equation*}
+\begin{cases}
+\dot{N}_2 = R_p - \frac{N_2}{\tau_2}\\
+\dot{N}_1 = \frac{N_2}{\tau_2} - \frac{N_1}{\tau_1}
+\end{cases}
+\end{equation*}
+Dopo un transitorio, in condizioni stazionarie ($\dot{N}_1 = \dot{N}_2 = 0$) ho:
+\begin{equation*}
+\begin{cases}
+N_2 = R_p\tau_2\\
+\frac{N_2}{\tau_2} = \frac{N_1}{\tau_1}
+\end{cases}
+\end{equation*}
+cioè:
+\begin{equation*}
+\begin{cases}
+N_2 = R_p\tau_2\\
+N_1 = \frac{\tau_1}{\tau_2} N_2
+\end{cases}
+\end{equation*}
+Se $\tau_1 << \tau_2$, $N_1 << N_2$ e $N \equiv N_2 - N_1 \simeq N_2$ (come a lezione).
+Nel caso generale $N_1 = \frac{\tau_1}{\tau_2} N_2$ Se $\tau_1 > \tau_2$, $N_1 > N_2$ e non ho mai gain, cioè non ho inversione di popolazione.
+
+\item %disegno
+\begin{enumerate}
+\item $\gamma \equiv = \frac{\gamma_1 + \gamma_2}{2} + \gamma_i$ e
+\begin{align*}
+\gamma_1 = -\ln R_1 = -\ln (1-T_1) \simeq T_1 \rightarrow \gamma \simeq 0.02\\
+\gamma_2 = -\ln R_2 = -\ln (1 -T_2) \simeq T_2
+\end{align*}
+Inoltre:
+\begin{equation*}
+\tau_c = \frac{L_e}{c_0 \gamma} = \frac{3\cdot 10^{-1} m}{3 \cdot 10^8 m/s \cdot 0.02} = \frac{1}{0.02} ns = 50 ns
+\end{equation*}
+
+\item Dalla curva in-out del laser si evince che:
+\begin{equation*}
+P_{pump th} 100 mW
+\end{equation*}
+e
+\begin{equation*}
+\eta = \frac{80 mW}{500 -100 mW} = \frac{8}{40} = 20\%
+\end{equation*}
+
+\item Siano $P_{p th}'$ e $\eta'$ soglia dell'efficienza del laser quando la trasmissione dello specchio di uscita è variata al valore $T_2 = 4\%$
+Dalla teoria:
+\begin{equation*}
+P_{p th} = \frac{R_{p th} h\nu_p V}{\eta_p} = \frac{N_{th} h\nu_p V}{\tau \eta_p} = \frac{\gamma h\nu_p V}{\tau \s \eta_p l} = \frac{\gamma h\nu_p A}{\s \tau \eta_p}
+\end{equation*}
+ed $\eta = \eta_q\eta_c\eta_t\eta_p$.
+Detta $\gamma'$ e $\gamma_2'$ le perdite logaritmiche quando $T_2 = 4\%$, si ha, a parità di altri parametri, si ha:
+\begin{equation*}
+\frac{P_{p th}'}{P_{p th}} = \frac{\gamma'}{\gamma}
+\end{equation*}
+e
+\begin{equation*}
+\frac{\eta'}{\eta} = \frac{\eta_c'}{\eta_c} = \frac{\frac{\gamma_2'}{2\gamma'}}{\frac{\gamma_2}{2\gamma}} = \frac{\gamma_2'}{\gamma_2} \frac{\gamma}{\gamma'}
+\end{equation*}
+con $\gamma_2' = - \ln (1-T_2') \simeq T_2' = 0.04$ $\gamma' = \frac{\gamma_1 + \gamma_2'}{2} + \gamma_i = 0.03$
+dunque:
+\begin{equation*}
+P_{p th}' = \frac{\gamma'}{\gamma} P_{p th} = \frac{3}{2} P_{p th} = 150 mW
+\end{equation*}
+e
+\begin{equation*}
+\eta' = \eta \frac{\gamma_2'}{\gamma_2} \frac{\gamma}{\gamma'} = 0.2\cdot \frac{0.04}{0.02} \cdot \frac{0.02}{0.03} = \frac{4}{3} \cdot 0.2 \simeq 26.84\%
+\end{equation*}
+\item %disegno
+Dal grafico si ha evidentemente:
+\begin{equation*}
+P_{out max}' = \eta'(P_{p max} - P_{p th}') = 0.2684 (500 -150) mW \simeq 93.4 mW
+\end{equation*}
+\end{enumerate}
+
+Osservazione: accoppiamento ottico in un laser
+Fissata una massima potenza $P_{pump}$ di pompaggio, esiste un valore ottimo di $T_2$ (trasmissione dello specchio di uscita) che massimizza la potenza di uscita del laser quando $P_{pump} = P_{pump max}$.
+
+\item Nd:YAG ($n = 1.82, \D \nu_0 = 126 GHz$)
+\begin{align*}
+&L = 20 cm\\
+&l = 1cm\\
+&T_1 = 1\%11
+&T_2 = 10\%\\
+&P_{p max} = 500 mW\\
+&P_{out} = P_out = 60 mW\\
+&\eta = 20\%
+\end{align*}
+\begin{enumerate}
+\item Potenza di soglia del laser
+%disegno
+Poiché:
+\begin{equation*}
+P_{out} = \eta (P_{p max} - P_{p th})
+\end{equation*}
+risolvendo rispetto a $P_{p th}$ ho:
+\begin{equation*}
+P_{p th} = -\frac{P_{out}}{\eta} + P_{p max} = 500 mW - \frac{60 mW}{0.2} = 200 mW
+\end{equation*}
+\item $\tau_c = \frac{L_e}{c_0 \gamma}$ con $L_e = L - l + nl$ e $\gamma = \frac{\gamma_1 + \gamma_2}{2} + \gamma_i$ con $\gamma_1 = - \ln (1-T_1)$ $\gamma_2 = - \ln(1-T_2)$
+Necessariamente:
+\begin{align*}
+&\gamma = 0.0577\\
+&l_e = 20.20 cm\\
+&\tau_c = 11.67 ns\\
+\end{align*}
+
+\item Dalla teoria:
+\begin{equation*}
+P_{out} = \frac{\phi}{\tau_c} h\nu \left(\frac{\gamma_2}{2\gamma}\right)
+\end{equation*}
+che risolta rispetto a $\phi$ dà $\phi \simeq 4.1 \cdot 10^9 fotoni$
+%disegno
+Spaziatura dei modi longitudinali è:
+\begin{equation*}
+\D\nu = \frac{c_0}{2L_e}
+\end{equation*}
+il numero di modi longitudinali che cadono sotto la riga di guadagno sono:
+\begin{equation*}
+N = \left[\frac{\D\nu_0}{\D \nu}\right] \simeq 170
+\end{equation*}
+
+\item [Risultati]
+\begin{enumerate}
+\item $\gamma \simeq 0.0577$
+\item $\tau_c \simeq 12 ns$
+\item $\phi = 4.23 \cdot 10^{12} fotoni$
+\item $\nu_{max} \simeq 166 kHz$
+\end{enumerate}
+\end{enumerate}
+\end{enumerate}
